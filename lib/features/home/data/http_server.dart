@@ -31,7 +31,7 @@ class Network {
   static Future<String> POST(String api, Map<String, String> params) async {
     print(params.toString());
     var uri = Uri.https(BASE, api); // http or https
-    var response = await post(uri, body:params);
+    var response = await post(uri, body: params);
     if (response.statusCode == 200 || response.statusCode == 201) {
       print('response.body: ${response.body}');
       return response.body;
@@ -41,9 +41,8 @@ class Network {
 
   static Future<String> PUT(String api, Map<String, String> params) async {
     var uri = Uri.https(BASE, api); // http or https
-    var response = await put(uri, body:params);
+    var response = await put(uri, body: params);
     if (response.statusCode == 200) {
-      print('response.body: ${response.body}');
       return response.body;
     }
     return "";
@@ -79,7 +78,6 @@ class Network {
   static Map<String, String> paramsUpdate(Post post) {
     Map<String, String> params = {};
     params.addAll({
-      'id': post.id.toString(),
       'mobile': post.mobile!,
       'fullname': post.fullname!,
     });

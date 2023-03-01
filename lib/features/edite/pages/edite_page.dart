@@ -35,7 +35,7 @@ class _UpdatePageState extends State<UpdatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Colors.grey,
+        backgroundColor: Colors.grey,
         title: const Text('PUT'),
       ),
       body: BlocListener<EditeBloc, EditeState>(
@@ -100,12 +100,10 @@ class _UpdatePageState extends State<UpdatePage> {
         foregroundColor: Colors.white,
         onPressed: () {
           Post post = Post(
-              //id: Random().toString(),
+              id: widget.post!.id,
               mobile: _mobileTextEditingController.text.toString(),
               fullname: _fullnameTextEditingController.text.toString());
-          context.read<EditeBloc>().add(EditePostEvent(post: widget.post!));
-          print(post);
-          //_apiPostUpdate();
+          context.read<EditeBloc>().add(EditePostEvent(post: post));
         },
         child: const Icon(Icons.done),
       ),
