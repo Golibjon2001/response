@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:http_request/features/create/data/date_model.dart';
 import 'package:http_request/features/edite/pages/bloc/edite_bloc.dart';
+import 'package:http_request/features/edite/pages/widgets/edite_page_widget.dart';
 import 'package:http_request/features/home/pages/bloc/home_bloc.dart';
 
 class UpdatePage extends StatefulWidget {
@@ -39,60 +40,15 @@ class _UpdatePageState extends State<UpdatePage> {
         title: const Text('PUT'),
       ),
       body: BlocListener<EditeBloc, EditeState>(
-        //listenWhen: (oldState, newState) => oldState.isEdit != newState.isEdit,
         listener: (context, state) {
           if (state.isEdit && state.status.isSubmissionSuccess) {
             context.read<HomeBloc>().add(HomeLoadPostEvent());
             Navigator.of(context).pop();
           }
         },
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              // Title
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5),
-                  child: TextField(
-                    controller: _fullnameTextEditingController,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                    decoration: const InputDecoration(
-                      labelText: 'fullname',
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              // Body
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5),
-                  child: TextField(
-                    controller: _mobileTextEditingController,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                    decoration: const InputDecoration(
-                      labelText: 'mobile',
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+        child: EditePageWidget(
+          fullnamecontrol: _fullnameTextEditingController,
+          mobilecontrol: _mobileTextEditingController,
         ),
       ),
       floatingActionButton: FloatingActionButton(

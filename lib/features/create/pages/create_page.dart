@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_request/features/create/data/date_model.dart';
 import 'package:http_request/features/create/pages/bloc/create_bloc.dart';
+import 'package:http_request/features/create/pages/widgets/create_page_widget.dart';
 import 'package:http_request/features/home/pages/bloc/home_bloc.dart';
 
 class AddPage extends StatefulWidget {
@@ -24,7 +25,7 @@ class AddPageState extends State<AddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Colors.grey,
+        backgroundColor: Colors.grey,
         title: const Text('POST'),
       ),
       body: BlocListener<CreateBloc, CreateState>(
@@ -35,55 +36,9 @@ class AddPageState extends State<AddPage> {
             Navigator.of(context).pop();
           }
         },
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              // Title
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5),
-                  child: TextField(
-                    controller: fullnameController,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                    decoration: const InputDecoration(
-                      labelText: 'fullname',
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
-
-              const SizedBox(
-                height: 10,
-              ),
-
-              // Body
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 5),
-                  child: TextField(
-                    controller: mobileController,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                    decoration: const InputDecoration(
-                      labelText: 'mobile',
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+        child: CreatePageWidget(
+          fullnameController: fullnameController,
+          mobileController: mobileController,
         ),
       ),
       floatingActionButton: FloatingActionButton(
