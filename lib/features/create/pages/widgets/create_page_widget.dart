@@ -10,7 +10,6 @@ class CreatePageWidget extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Column(
         children: [
-          // Title
           Container(
             height: 50,
             decoration: BoxDecoration(
@@ -34,7 +33,6 @@ class CreatePageWidget extends StatelessWidget {
             height: 10,
           ),
 
-          // Body
           Container(
             height: 50,
             decoration: BoxDecoration(

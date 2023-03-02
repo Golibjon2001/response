@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+
 class EditePageWidget extends StatelessWidget {
   final TextEditingController fullnamecontrol;
   final TextEditingController mobilecontrol;
-  const EditePageWidget({required this.fullnamecontrol, required this.mobilecontrol,Key? key}) : super(key: key);
+
+  const EditePageWidget(
+      {required this.fullnamecontrol, required this.mobilecontrol, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +14,6 @@ class EditePageWidget extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
-          // Title
           Container(
             height: 50,
             decoration: BoxDecoration(
@@ -32,7 +35,6 @@ class EditePageWidget extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          // Body
           Container(
             height: 50,
             decoration: BoxDecoration(
